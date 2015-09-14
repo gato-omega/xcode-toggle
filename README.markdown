@@ -39,4 +39,4 @@ Options:
   --help             Show this message and exit.
 ```
 
-[Here](Documentation/session.html) is xcode-toggle in action.
+[Here](http://schwa.github.io/xcode-toggle/Session_1.html) is xcode-toggle in action.
