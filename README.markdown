@@ -12,13 +12,13 @@ CLI tool for fast switching between Xcode versions
 
 If you don't mind polluting your system's python install with junk:
 
-```shell
+```sh
 sudo pip install git+https://github.com/schwa/xcode-toggle.git
 ```
 
 If you know how to add `Library/Python/2.7/bin/` to your shell's `PATH`:
 
-```shell
+```sh
 sudo pip install --user git+https://github.com/schwa/xcode-toggle.git
 ```
 
@@ -26,7 +26,7 @@ If you know how to use virtualenv (preferred) then good for you, but you don't n
 
 ## Usage
 
-```shell
+```sh
 schwa@mote ~> xcode-toggle --help
 Usage: xcode-toggle [OPTIONS] [PATH]...
 
@@ -39,4 +39,4 @@ Options:
   --help             Show this message and exit.
 ```
 
-[Here][Documentation/session.html] is xcode-toggle in action.
+[Here](Documentation/session.html) is xcode-toggle in action.
