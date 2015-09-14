@@ -61,7 +61,10 @@ def list_paths():
 
 
 def get_paths():
-    return sorted(list(Path("/Applications").glob("Xcode*.app")))
+    output = subprocess.check_output(["/usr/bin/mdfind", 'kMDItemCFBundleIdentifier="com.apple.dt.Xcode" and kMDItemContentType="com.apple.application-bundle"'])
+    output = output.strip()
+    paths = [Path(path) for path in output.split("\n")]
+    return sorted(paths)
 
 
 def get_current_path():

@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='xcode-toggle',
-    version='0.0.1',
+    version='0.0.2',
     url='https://github.com/schwa/xcode-toggle',
     license='MIT',
     author='Jonathan Wight',
