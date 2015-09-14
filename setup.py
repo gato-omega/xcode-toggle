@@ -13,7 +13,7 @@ setup(
     install_requires=['click', 'pathlib', 'blessings'],
     entry_points='''
         [console_scripts]
-        xcode_toggle=xcode_toggle:main
+        xcode-toggle=xcode_toggle:main
     ''',
 )
 
