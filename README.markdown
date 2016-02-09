@@ -7,6 +7,7 @@ CLI tool for fast switching between Xcode versions
 * Switch between Xcode interactively or via "toggling" between all installed versions
 * Finds all Xcodes installed in /Applications
 * Will automatically invoke `sudo` so you don't have to remember
+* Interactively select a Swift toolchain and automatically spawn a new shell session configured for it
 
 ## Installation
 
