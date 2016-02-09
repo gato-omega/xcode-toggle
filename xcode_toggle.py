@@ -1,8 +1,10 @@
 #!/usr/bin/env python
 
 import subprocess
+import os
+import sys
 
-from pathlib import Path
+from pathlib2 import Path
 from blessings import Terminal
 import click
 
@@ -17,6 +19,7 @@ term = Terminal()
 @click.option("-t", "--toggle", "command", flag_value="toggle", help="Toggle between all Xcode paths")
 @click.option("-i", "--interactive", "command", flag_value="ask", help="Select Xcode interactively")
 @click.option("-s", "--select", "command", flag_value="select", help="Select Xcode manually")
+@click.option("-x", "--toolchains", "command", flag_value="toolchains", help="Select Swift toolchains interactively")
 @click.argument("path", nargs=-1)
 def main(command, path):
     if command == "print":
@@ -44,10 +47,41 @@ def main(command, path):
         next_path = xcode_paths[option]
         subprocess.check_call(["/usr/bin/sudo", "/usr/bin/xcode-select", "-s", str(next_path)])
         list_paths()
-    elif command == "select":
-        subprocess.call(["/usr/bin/sudo", "/usr/bin/xcode-select", "-s", path[0]])
+    elif command == "toolchains":
+
+#$ export PATH=/Library/Developer/Toolchains/swift-latest.xctoolchain/usr/bin:"${PATH}"
+
+        shell_path = Path(os.environ["SHELL"])
+
+        # path = "foobar"
+
+        toolchains_path = Path("/Library/Developer/Toolchains")
+        paths = list(toolchains_path .glob("*"))
+        path = choose(paths)
+        print "Using {}".format(path)
+        os.environ["PATH"] = os.environ["PATH"] + ":{}/usr/bin".format(path)
+        os.system(str(shell_path))
+
+
+        #     if shell == "fish":
+        #         print 'set -x PATH {}/usr/bin "${{PATH}}"'.format(path)
+        #     else:
+        #         print 'export PATH={}/usr/bin:"${{PATH}}"'.format(path)
+
     else:
-        pass
+        raise Exception("Unknown command: ", command)
+
+
+def choose(items, current = None):
+    for index, item in enumerate(items):
+        if current == item:
+            print "[{index}] {item} {t.bold}[Current]{t.normal}".format(t=term, index=index, item=item)
+        else:
+            print "[{index}] {item}".format(t=term, index=index, item=item)
+    option = input("Enter a number: ")
+    option = int(option)
+    return items[option]
+
 
 
 def list_paths():

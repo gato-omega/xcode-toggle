@@ -9,7 +9,7 @@ setup(
     author_email='schwa@schwa.io',
     description='A better "xcode-select"',
     py_modules=['xcode_toggle'],
-    install_requires=['click', 'pathlib', 'blessings'],
+    install_requires=['click', 'pathlib2', 'blessings'],
     entry_points='''
         [console_scripts]
         xcode-toggle=xcode_toggle:main
