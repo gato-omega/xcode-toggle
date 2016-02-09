@@ -36,6 +36,7 @@ Options:
   -t, --toggle       Toggle between all Xcode paths
   -i, --interactive  Select Xcode interactively
   -s, --select       Select Xcode manually
+  -x, --toolchains   Select Swift toolchains interactively
   --help             Show this message and exit.
 ```
 
